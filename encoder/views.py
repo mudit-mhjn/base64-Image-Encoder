@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from .forms import image_upload_form
 from .convert import base64_md5
 # Create your views here.
@@ -12,7 +12,8 @@ def image_upload(request):
             #print(form)
             form.save()
             my_encode = convert_image(form)
-            return render(request, 'result.html', my_encode)
+            return JsonResponse(my_encode)
+            #return render(request, 'result.html', my_encode)
 
     else:
         form = image_upload_form()
