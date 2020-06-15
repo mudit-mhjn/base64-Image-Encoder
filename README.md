@@ -1,7 +1,4 @@
-![img](./docs/logo.png)
 # BASE 64 - Image Encoder
-
-
 
 #### Create Dev Env
 ```shell
