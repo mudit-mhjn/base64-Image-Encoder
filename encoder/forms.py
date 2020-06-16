@@ -5,5 +5,4 @@ class image_upload_form(forms.ModelForm):
 
     class Meta:
         model = images
-        fields = ['image_tag', 'image_main']
-        
+        fields = ['image_main']

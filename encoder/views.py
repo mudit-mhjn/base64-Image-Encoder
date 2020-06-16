@@ -4,6 +4,10 @@ from .forms import image_upload_form
 from .convert import base64_md5
 from django.conf import settings
 # Create your views here.
+from rest_framework import status
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.parsers import FileUploadParser
 
 def image_upload(request):
     if request.method=='POST':
@@ -15,10 +19,10 @@ def image_upload(request):
             my_encode = convert_image(image)
             return JsonResponse(my_encode)
             #return render(request, 'result.html', my_encode)
-
     else:
         form = image_upload_form()
     return render(request, 'upload.html', {'form':form})
+
 
 def convert_image(image):
     '''
