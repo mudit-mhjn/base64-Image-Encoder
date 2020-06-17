@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse
 from .forms import image_upload_form
 from .convert import base64_md5
 from django.conf import settings
-# Create your views here.
+import os
 from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -30,7 +30,8 @@ def convert_image(image):
     path of the media\images folder with image. The raw string of the image
     address is read as binary ('rb') and is passed to base64_md5 function.
     '''
-    image_location = settings.BASE_DIR + '\media\images\{}'.format(image)
+    images_location = os.path.join(settings.MEDIA_ROOT, 'images')
+    image_location = os.path.join(images_location, '{}'.format(image))
     #with open(image_location, 'rb') as img:
     img = open(r'''{}'''.format(image_location), 'rb')
     encryts = base64_md5(img)
